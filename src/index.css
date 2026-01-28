@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-slate-900;
+    background: linear-gradient(-45deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #0f0c29 75%, #1a1a2e 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.15), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.15), transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(72, 61, 139, 0.1), transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(147, 51, 234, 0.1), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Animated stars */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    animation: stars 60s linear infinite;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes stars {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Glassmorphism utility classes with galaxy theme */
+@layer utilities {
+  .glass {
+    background: rgba(138, 43, 226, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+  }
+
+  .glass-strong {
+    background: rgba(15, 12, 41, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(138, 43, 226, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(36, 36, 62, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(147, 51, 234, 0.25);
+    box-shadow:
+      0 8px 32px 0 rgba(138, 43, 226, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card:hover {
+    background: rgba(36, 36, 62, 0.4);
+    box-shadow:
+      0 12px 40px 0 rgba(138, 43, 226, 0.3),
+      0 0 20px rgba(147, 51, 234, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(147, 51, 234, 0.4);
+  }
+
+  .glass-input {
+    background: rgba(36, 36, 62, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+  }
+
+  .glass-input:focus {
+    background: rgba(36, 36, 62, 0.35);
+    border-color: rgba(147, 51, 234, 0.6);
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(138, 43, 226, 0.15),
+      0 0 20px rgba(147, 51, 234, 0.2);
+  }
+
+  .glass-button {
+    background: rgba(36, 36, 62, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .glass-button:hover {
+    background: rgba(36, 36, 62, 0.45);
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 12px rgba(138, 43, 226, 0.3),
+      0 0 15px rgba(147, 51, 234, 0.2);
+    border-color: rgba(147, 51, 234, 0.5);
+  }
+
+  .glass-button-active {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(147, 51, 234, 0.4));
+    border-color: rgba(147, 51, 234, 0.6);
+    box-shadow:
+      0 0 20px rgba(138, 43, 226, 0.4),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Custom slider styles for react-slider */
+.slider-track-1 {
+  background: linear-gradient(90deg, #8a2be2 0%, #9333ea 50%, #a855f7 100%);
+  box-shadow:
+    0 2px 8px rgba(138, 43, 226, 0.4),
+    0 0 15px rgba(147, 51, 234, 0.3);
+}
+
+.slider-thumb {
+  @apply outline-none cursor-pointer;
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 4px 12px rgba(138, 43, 226, 0.5),
+    0 0 20px rgba(147, 51, 234, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow:
+    0 6px 16px rgba(138, 43, 226, 0.6),
+    0 0 25px rgba(147, 51, 234, 0.5);
+}
+
+/* React Select Glassmorphism */
+.react-select-container .react-select__control {
+  background: rgba(36, 36, 62, 0.3) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(147, 51, 234, 0.3) !important;
+  box-shadow: none !important;
+}
+
+.react-select-container .react-select__control:hover,
+.react-select-container .react-select__control--is-focused {
+  background: rgba(36, 36, 62, 0.4) !important;
+  border-color: rgba(147, 51, 234, 0.5) !important;
+  box-shadow:
+    0 0 0 3px rgba(138, 43, 226, 0.15) !important,
+    0 0 15px rgba(147, 51, 234, 0.2) !important;
+}
+
+.react-select-container .react-select__menu {
+  background: rgba(15, 12, 41, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  box-shadow:
+    0 8px 32px rgba(138, 43, 226, 0.3) !important,
+    0 0 20px rgba(147, 51, 234, 0.2) !important;
+}
+
+.react-select-container .react-select__option {
+  background: transparent !important;
+  color: #e0e7ff !important;
+}
+
+.react-select-container .react-select__option:hover,
+.react-select-container .react-select__option--is-focused {
+  background: rgba(138, 43, 226, 0.2) !important;
+}
+
+.react-select-container .react-select__option--is-selected {
+  background: rgba(138, 43, 226, 0.4) !important;
+}
+
+.react-select-container .react-select__multi-value {
+  background: rgba(138, 43, 226, 0.25) !important;
+  border: 1px solid rgba(147, 51, 234, 0.4);
+}
+
+.react-select-container .react-select__multi-value__label {
+  color: #e0e7ff !important;
+  font-weight: 500;
+}
+
+.react-select-container .react-select__multi-value__remove:hover {
+  background: rgba(138, 43, 226, 0.4) !important;
+  color: #fff !important;
+}
+
+.react-select-container .react-select__placeholder {
+  color: rgba(224, 231, 255, 0.5) !important;
+}
+
+.react-select-container .react-select__single-value {
+  color: #e0e7ff !important;
+}
+
+.react-select-container .react-select__input-container {
+  color: #e0e7ff !important;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 12, 41, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8a2be2, #9333ea);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9333ea, #a855f7);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+}
+
+/* Glow effect for special elements */
+.glow {
+  text-shadow:
+    0 0 10px rgba(138, 43, 226, 0.5),
+    0 0 20px rgba(147, 51, 234, 0.3),
+    0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+/* Floating animation for cards */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(138, 43, 226, 0.3),
+      0 0 40px rgba(147, 51, 234, 0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 0 30px rgba(138, 43, 226, 0.5),
+      0 0 60px rgba(147, 51, 234, 0.3);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
